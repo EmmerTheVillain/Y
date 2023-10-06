@@ -1,5 +1,5 @@
 const User = require('./User');
-const Post = require('./Post');
+const Tweet = require('./Tweet');
 const Profile = require('./Profile')
 
-module.exports = { User, Post, Profile };
+module.exports = { User, Tweet, Profile };
