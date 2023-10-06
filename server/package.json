@@ -1,19 +1,23 @@
 {
-    "name": "y-server",
-    "version": "1.0.0",
-    "description": "",
-    "main": "server/server.js",
-    "scripts": {
-      "start": "node server/server.js --ignore client",
-      "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm run dev\"",
-      "install": "cd server && npm i && cd ../client && npm i",
-      "seed": "cd server && npm run seed",
-      "build": "cd client && npm run build"
-    },
-    "author": "",
-    "license": "ISC",
-    "devDependencies": {
-      "concurrently": "^5.3.0"
-    }
+  "name": "y-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "seed": "node seeds/seed.js",
+    "watch": "nodemon server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@apollo/server": "^4.7.1",
+    "apollo-server": "^3.12.1",
+    "express": "^4.17.2",
+    "graphql": "^16.6.0",
+    "mongoose": "^7.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
   }
-  
+}

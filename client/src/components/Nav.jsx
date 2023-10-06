@@ -11,6 +11,9 @@ function Nav() {
     <Link key={2} className="nav-link text-light" to="/about">
       About Us
     </Link>,
+    <Link key={3} className="nav-link text-light" to="/tweet">
+        Tweet
+      </Link>,
     // Add more links as needed
   ];
 
