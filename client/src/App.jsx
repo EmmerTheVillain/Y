@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import React from 'react';
 import { HashRouter as Router, Route, Routes } from 'react-router-dom'; 
-import Nav from './components/Nav.jsx'
+import NavOutput from './components/NavOutput.jsx'
 import Home from './pages/Home.jsx';
 import AboutUs from './pages/AboutUs.jsx'
 import MyTweetPage from './pages/MyTweetPage.jsx';
@@ -11,7 +11,7 @@ function App() {
     <Router>
       <div className="app">
         <header>
-          <Nav />
+          <NavOutput />
         </header>
         <main>
           <Routes>

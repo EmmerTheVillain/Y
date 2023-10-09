@@ -1,9 +1,9 @@
 // src/components/Nav.jsx
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Navbar from './ui/Navbar.jsx';
+import NavbarComponent from './UI/NavbarComponent.jsx';
 
-function Nav() {
+function NavOutput() {
   const navigationLinks = [
     <Link key={1} className="nav-link text-light" to="/">
       Home
@@ -17,7 +17,7 @@ function Nav() {
     // Add more links as needed
   ];
 
-  return <Navbar links={navigationLinks} />;
+  return <NavbarComponent links={navigationLinks} />;
 }
 
-export default Nav;
+export default NavOutput;
