@@ -2,7 +2,7 @@ import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Yeet from './yeet';
+import Tweet from './Tweet';
 
 function Home() {
   return (
@@ -12,7 +12,7 @@ function Home() {
           <h1>Welcome to y?</h1>
         }
         </Col>
-        <Yeet />
+        <Tweet />
       </Row>
     </Container>
   );
