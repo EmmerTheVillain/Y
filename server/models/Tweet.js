@@ -1,6 +1,7 @@
+// server/models/Tweet.js
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const { paginatePlugin } = require('../../utils/mongo');
+const { paginatePlugin } = require('../utils/mongo');
 
 const TweetSchema = new Schema(
     {

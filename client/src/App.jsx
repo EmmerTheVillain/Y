@@ -1,9 +1,10 @@
 import { useState } from 'react'
 import React from 'react';
 import { HashRouter as Router, Route, Routes } from 'react-router-dom'; 
-import Nav from './components/Nav.jsx'
+import Nav from './components/Nav.jsx';
 import Home from './pages/Home.jsx';
-import AboutUs from './pages/AboutUs.jsx'
+import AboutUs from './pages/AboutUs.jsx';
+import Signup from './pages/Signup.jsx';
 import MyTweetPage from './pages/MyTweetPage.jsx';
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
           <Routes>
           <Route exact path="/" element={<Home />} />
           <Route exact path="/about" element={<AboutUs />} />
+          <Route exact path="/signup" element={<Signup />} />
           <Route exact path="/tweet" element={<MyTweetPage />} />
           </Routes>
         </main>

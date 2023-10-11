@@ -1,11 +1,12 @@
+// server/models/User.js
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const validator = require('validator');
-const { ErrorHandler } = require('../../utils/error');
-const { generateAccessToken, hashPassword } = require('../../utils/auth');
-const { paginatePlugin } = require('../../utils/mongo');
-const { roles } = require('../../config/roles');
-const { formatUsername } = require('../../utils/helpers');
+const { ErrorHandler } = require('../utils/error');
+const { generateAccessToken, hashPassword } = require('../utils/auth');
+const { paginatePlugin } = require('../utils/mongo');
+const { roles } = require('../config/roles');
+const { formatUsername } = require('../utils/helpers');
 
 const Schema = mongoose.Schema;
 

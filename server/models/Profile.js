@@ -1,7 +1,8 @@
+// server/models/Profile.js
 const mongoose = require('mongoose');
 const validator = require('validator');
-const { ErrorHandler } = require('../../utils/error');
-const { paginatePlugin } = require('../../utils/mongo');
+const { ErrorHandler } = require('../utils/error');
+const { paginatePlugin } = require('../utils/mongo');
 const Schema = mongoose.Schema;
 
 const ProfileSchema = new Schema(
