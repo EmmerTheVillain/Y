@@ -18,9 +18,9 @@ export default function NavbarComponent({ links }) {
 // function ColorSchemesExample() {
 //   return (
     <>
-      <Navbar bg="dark" data-bs-theme="dark">
+      <Navbar fixed="top" bg="dark" data-bs-theme="dark">
         <Container>
-          <Navbar.Brand href="#home">Navbar</Navbar.Brand>
+          <Navbar.Brand>Y?</Navbar.Brand>
           <Nav className="me-auto">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               {links.map((link) => link)}
