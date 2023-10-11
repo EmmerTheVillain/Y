@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import React from 'react';
 import { HashRouter as Router, Route, Routes } from 'react-router-dom'; 
+import 'bootstrap/dist/css/bootstrap.min.css'
+
 import NavOutput from './components/NavOutput.jsx'
 import Home from './pages/Home.jsx';
 import AboutUs from './pages/AboutUs.jsx'
