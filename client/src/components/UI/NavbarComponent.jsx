@@ -21,7 +21,7 @@ export default function NavbarComponent({ links }) {
       <Navbar fixed="top" bg="dark" data-bs-theme="dark">
         <Container>
           <Navbar.Brand>Y?</Navbar.Brand>
-          <Nav className="me-auto">
+          <Nav className="justify-content-end">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               {links.map((link) => link)}
             </ul>
