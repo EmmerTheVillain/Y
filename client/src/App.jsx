@@ -14,14 +14,19 @@ import MyTweetPage from './pages/MyTweetPage.jsx';
 function App() {
   return (
     <Router>
-      <Container className="app">
-        <Row>
+      <Container fluid className="app">
+        <Row className="justify-content-center">
           <header>
             <NavOutput />
           </header>
         </Row>
-        <Row className="justify-content-md-center">
-          <Col>
+        <Row  className="">
+          <Col className="bg-light border"
+      sm={{
+        offset: 4,
+        order: 2,
+        size: 4
+      }}>
           <main>
             <Routes>
             <Route exact path="/" element={<Home />} />

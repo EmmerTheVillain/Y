@@ -11,7 +11,7 @@ import Card from 'react-bootstrap/Card';
   // }
   
   return (
-    <Card style={{ width: '18rem' }}>
+    <Card >
    
       <Card.Body>
         <Card.Title>username</Card.Title>
