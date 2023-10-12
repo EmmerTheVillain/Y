@@ -11,6 +11,7 @@ import Home from './pages/Home.jsx';
 import AboutUs from './pages/AboutUs.jsx'
 import MyTweetPage from './pages/MyTweetPage.jsx';
 import Sidebar from './components/Sidebar.jsx';
+import Profile from './pages/Profile.jsx';
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
             <Route exact path="/" element={<Home />} />
             <Route exact path="/about" element={<AboutUs />} />
             <Route exact path="/tweet" element={<MyTweetPage />} />
+            <Route exact path="/profile" element={<Profile />} />
             </Routes>
           </main>
           </Col>
