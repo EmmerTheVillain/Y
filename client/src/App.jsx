@@ -40,7 +40,7 @@ function App() {
           <Sidebar />
           </Col> */}
         </Row>
-        <Row className="bg-light border"
+        <Row className="bg-light"
       sm={{
         offset: 1,
         order: 1,
