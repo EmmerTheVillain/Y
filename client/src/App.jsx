@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import React from 'react';
 import { HashRouter as Router, Route, Routes } from 'react-router-dom'; 
+import { ApolloClient, InMemoryCache, createHttpLink, ApolloProvider } from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
 import Nav from './components/Nav.jsx';
 import Home from './pages/Home.jsx';
 import AboutUs from './pages/AboutUs.jsx';

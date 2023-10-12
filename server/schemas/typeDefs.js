@@ -3,30 +3,35 @@ const { gql } = require('apollo-server');
 
 const typeDefs = gql`
   type Tweet {
-    id: ID!
+    _id: ID!
     text: String!
     author: String!
   }
 
   type User {
-    id: ID!
+    _id: ID!
     name: String!
     username: String!
     email: String!
+    password: String
+    role: String
+    avatar: String
   }
 
   type Auth {
-    token: String
+    token: ID!
     user: User
   }
   
   type Query {
     getTweets: [Tweet]
+    user(id: ID!): User
   }
 
   type Mutation {
     createUser(input: CreateUserInput!): User
     createTweet(text: String!): Tweet
+    login(email: String!, password: String!): Auth
   }
 
   input CreateUserInput {

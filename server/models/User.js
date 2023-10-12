@@ -132,6 +132,10 @@ UserSchema.statics.isUsernameTaken = async function (username, excludeUserId) {
   return !!user;
 };
 
+UserSchema.methods.isCorrectPassword = async function (password) {
+  return bcrypt.compare(password, this.password);
+};
+
 const User = mongoose.model('User', UserSchema);
 
 module.exports = User;

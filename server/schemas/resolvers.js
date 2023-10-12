@@ -1,5 +1,8 @@
 // server/schemas/resolvers.js
 const { Tweet, User } = require('../models/');
+const jwt = require('jsonwebtoken');
+const { generateAccessToken, verifyToken, signToken, AuthenticationError } = require('../utils/auth');
+
 
 const resolvers = {
   Query: {
@@ -10,6 +13,9 @@ const resolvers = {
       } catch (error) {
         throw new Error('Failed to fetch tweets');
       }
+    },
+    user: async (_, { id }, { User }) => {
+      return User.findById(id);
     },
   },
   Mutation: {
@@ -22,6 +28,7 @@ const resolvers = {
         throw new Error("User creation failed: " + error.message);
       }
     },
+
     createTweet: async (_, { text }, { user }) => {
       if (!user) {
         throw new Error('Authentication required to create a tweet');
@@ -40,7 +47,25 @@ const resolvers = {
         throw new Error('Failed to create a tweet');
       }
     },
+
+    login: async (parent, { email, password }) => {
+      const user = await User.findOne({ email });
+
+      if (!user) {
+        throw AuthenticationError;
+      }
+
+      const correctPw = await user.isCorrectPassword(password);
+
+      if (!correctPw) {
+        throw AuthenticationError;
+      }
+
+      const token = signToken(user);
+
+      return { token, user };
+    },
   },
-};  
+};
 
 module.exports = resolvers;
