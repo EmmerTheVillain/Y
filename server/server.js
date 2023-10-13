@@ -7,7 +7,7 @@ const path = require('path');
 const cors = require('cors');
 const verifyToken = require('./utils/auth')
 
-const { User, Tweet, Profile } = require('./models')
+const { User, Tweet, } = require('./models')
 const { typeDefs, resolvers } = require('./schemas');
 const db = require('./config/connection');
 
@@ -20,7 +20,6 @@ const server = new ApolloServer({
       models: {
         User,
         Tweet,
-        Profile,
       },
     }
 });
