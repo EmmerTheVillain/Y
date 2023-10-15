@@ -85,3 +85,12 @@ mutation LikeTweet($tweetId: ID!) {
   }
 }
 `;
+
+export const UPDATE_USER = gql`
+  mutation updateUser($id: ID!, $input: UpdateUserInput) {
+    updateUser(id: $id, input: $input) {
+      _id
+      username
+    }
+  }
+`;

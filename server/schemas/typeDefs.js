@@ -54,7 +54,14 @@ const typeDefs = `
     followUser(currentUser: String!, tweetAuthor: String!): User
     unfollowUser(currentUser: String! tweetAuthor: String!): User
     likeTweet(tweetId: ID!): Tweet
+    updateUser(id: ID!, input: UpdateUserInput): User
   }
-`
 
+
+input UpdateUserInput {
+  name: String
+  username: String
+  password: String
+}
+`
 module.exports = typeDefs;

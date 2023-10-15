@@ -110,6 +110,44 @@ const resolvers = {
       }
       throw AuthenticationError;
     },
+    updateUser: async (_, { id, input }, context) => {
+      // Check if the user is authenticated
+      if (!context.user) {
+        throw new AuthenticationError('You need to be logged in to perform this action.');
+      }
+
+      try {
+        // Find the user by ID
+        const userToUpdate = await User.findById(id);
+
+        if (!userToUpdate) {
+          throw new UserInputError('User not found.');
+        }
+
+        // Check if the user is authorized to update this user's information
+        if (userToUpdate._id.toString() !== context.user._id.toString()) {
+          throw new AuthenticationError('You are not authorized to update this user.');
+        }
+
+        // Update the user fields if they exist in the input
+        if (input.name) {
+          userToUpdate.name = input.name;
+        }
+        if (input.username) {
+          userToUpdate.username = input.username;
+        }
+        if (input.password) {
+          userToUpdate.password = input.password;
+        }
+
+        // Save the updated user
+        await userToUpdate.save();
+
+        return userToUpdate;
+      } catch (error) {
+        throw new ApolloError('Failed to update user', error);
+      }
+    },
     removeTweet: async (parent, { tweetId }, context) => {
       if (context.user) {
         const tweet = await Tweet.findOneAndDelete({

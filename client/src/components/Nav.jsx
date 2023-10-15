@@ -31,6 +31,9 @@ function Nav() {
   // If the user is logged in, add a "Logout" button to the navigation links
   if (isLoggedIn) {
     navigationLinks.push(
+      <Link key={6} className="nav-link text-light" to="/settings">
+      Settings
+    </Link>,
       <button
         key={5}
         className="btn btn-link text-light"

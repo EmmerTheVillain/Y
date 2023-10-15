@@ -11,6 +11,7 @@ import Signup from './pages/Signup.jsx';
 import Login from './pages/Login.jsx'
 import Profile from './pages/Profile.jsx';
 import MyTweetPage from './pages/MyTweetPage.jsx';
+import Settings from './pages/Settings.jsx';
 import SingleTweet from './pages/SingleTweet.jsx'
 
 function App() {
@@ -41,6 +42,7 @@ function App() {
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/signup" element={<Signup />} />
           <Route exact path="/profiles/:profileId" element={<Profile currentUser={currentUser}/>} />
+          <Route exact path="/settings" element={<Settings />} />
           <Route exact path="/tweets/:tweetId" element={<SingleTweet />} />
           </Routes>
         </main>
