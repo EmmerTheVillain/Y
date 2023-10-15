@@ -1,31 +1,38 @@
 import React, { useState, useEffect } from 'react';
 import Login from '../components/Login.jsx';
-import Profile from '../components/Profile.jsx'
-import Auth from '../utils/auth'; // Import your authentication utility
+import TweetList from '../components/TweetList';
+import TweetForm from '../components/UI/TweetForm.jsx';
+import { useQuery } from '@apollo/client';
+import { QUERY_TWEETS } from '../utils/queries';
 
-function Home() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  useEffect(() => {
-    // Check the user's authentication status when the component is mounted
-    const isAuthenticated = Auth.loggedIn(); // Replace with your actual authentication check
-
-    // Update the state based on the authentication status
-    setIsLoggedIn(isAuthenticated);
-  }, []);
+const Home = ({ currentUser }) => {
+  const { loading, data } = useQuery(QUERY_TWEETS);
+  const tweets = data?.tweets || [];
+  const isLoggedIn = currentUser.data;
 
   return (
     <div className="home">
       <h1>Welcome to y?</h1>
       {isLoggedIn ? (
         // Render content for a logged-in user (e.g., user profile)
-        <Profile />
+        <>
+          <div className="col-12 col-md-10 mb-3 p-3" style={{ border: '1px dotted #1a1a1a' }}>
+            <TweetForm />
+          </div>
+          <div className="col-12 col-md-8 mb-3">
+            {loading ? (
+              <div>Loading...</div>
+            ) : (
+              <TweetList tweets={tweets} title="YEETS" currentUser={currentUser} />
+            )}
+          </div>
+        </>
       ) : (
         // Render the Login component for users who are not logged in
         <Login />
       )}
     </div>
   );
-}
+};
 
 export default Home;

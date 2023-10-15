@@ -2,53 +2,29 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 
-import { ADD_TWEET } from '../utils/mutations';
-import { QUERY_TWEETS, QUERY_ME } from '../utils/queries';
+import { ADD_COMMENT } from '../../utils/mutations';
 
-import Auth from '../utils/auth';
+import Auth from '../../utils/auth';
 
-const TweetForm = () => {
-  const [tweetText, setTweetText] = useState('');
-
+const CommentForm = ({ tweetId }) => {
+  const [commentText, setCommentText] = useState('');
   const [characterCount, setCharacterCount] = useState(0);
 
-  const [addTweet, { error }] = useMutation(ADD_TWEET, {
-    update(cache, { data: { addTweet } }) {
-      try {
-        const { tweets } = cache.readQuery({ query: QUERY_TWEETS });
-
-        cache.writeQuery({
-          query: QUERY_TWEETS,
-          data: { tweets: [addTweet, ...tweets] },
-        });
-      } catch (e) {
-        console.error(e);
-      }
-
-      // update me object's cache
-      const meData = cache.readQuery({ query: QUERY_ME });
-      if (meData && meData.me) {
-        const { me } = meData;
-        cache.writeQuery({
-          query: QUERY_ME,
-          data: { me: { ...me, thoughts: [...me.thoughts, addThought] } },
-        });
-      }
-    },
-  });
+  const [addComment, { error }] = useMutation(ADD_COMMENT);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
     try {
-      const { data } = await addTweet({
+      const { data } = await addComment({
         variables: {
-          tweetText,
-          tweetAuthor: Auth.getProfile().data.username,
+          tweetId,
+          commentText,
+          commentAuthor: Auth.getProfile().data.username,
         },
       });
 
-      setTweetText('');
+      setCommentText('');
     } catch (err) {
       console.error(err);
     }
@@ -57,15 +33,15 @@ const TweetForm = () => {
   const handleChange = (event) => {
     const { name, value } = event.target;
 
-    if (name === 'tweetText' && value.length <= 280) {
-      setTweetText(value);
+    if (name === 'commentText' && value.length <= 280) {
+      setCommentText(value);
       setCharacterCount(value.length);
     }
   };
 
   return (
     <div>
-      <h3>What's on your techy mind?</h3>
+      <h4>What are your tweets on this tweet?</h4>
 
       {Auth.loggedIn() ? (
         <>
@@ -75,6 +51,7 @@ const TweetForm = () => {
             }`}
           >
             Character Count: {characterCount}/280
+            {error && <span className="ml-2">{error.message}</span>}
           </p>
           <form
             className="flex-row justify-center justify-space-between-md align-center"
@@ -82,9 +59,9 @@ const TweetForm = () => {
           >
             <div className="col-12 col-lg-9">
               <textarea
-                name="tweetText"
-                placeholder="Here's a new tweet..."
-                value={tweetText}
+                name="commentText"
+                placeholder="Add your comment..."
+                value={commentText}
                 className="form-input w-100"
                 style={{ lineHeight: '1.5', resize: 'vertical' }}
                 onChange={handleChange}
@@ -93,14 +70,9 @@ const TweetForm = () => {
 
             <div className="col-12 col-lg-3">
               <button className="btn btn-primary btn-block py-3" type="submit">
-                Add Tweet
+                Add Comment
               </button>
             </div>
-            {error && (
-              <div className="col-12 my-3 bg-danger text-white p-3">
-                {error.message}
-              </div>
-            )}
           </form>
         </>
       ) : (
@@ -113,4 +85,4 @@ const TweetForm = () => {
   );
 };
 
-export default TweetForm;
+export default CommentForm;

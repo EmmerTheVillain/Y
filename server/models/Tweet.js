@@ -1,3 +1,4 @@
+// server/models/Tweet.js
 const { Schema, model } = require('mongoose');
 const dateFormat = require('../utils/dateFormat');
 
@@ -38,6 +39,12 @@ const tweetSchema = new Schema({
       },
     },
   ],
+  likedBy: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'User',
+    },
+  ]
 });
 
 const Tweet = model('Tweet', tweetSchema);

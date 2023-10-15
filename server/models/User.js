@@ -1,3 +1,4 @@
+// server/models/User.js
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 
@@ -43,6 +44,24 @@ const userSchema = new Schema({
       ref: 'Tweet',
     },
   ],
+  following: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'User',
+    },
+  ],
+  followers: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'User',
+    },
+  ],
+  likes: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Tweet',
+    }
+  ]
 });
 
 userSchema.pre('save', async function (next) {

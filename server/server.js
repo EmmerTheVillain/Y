@@ -5,7 +5,6 @@ const { expressMiddleware } = require('@apollo/server/express4');
 const { authMiddleware } = require('./utils/auth');
 const path = require('path');
 const cors = require('cors');
-const verifyToken = require('./utils/auth')
 
 const { User, Tweet, } = require('./models')
 const { typeDefs, resolvers } = require('./schemas');
