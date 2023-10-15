@@ -15,19 +15,26 @@ import Settings from './pages/Settings.jsx';
 import SingleTweet from './pages/SingleTweet.jsx'
 
 function App() {
-  const [currentUser, setCurrentUser] = useState({});
-
-
-  useEffect(() => {
-    // Check if a JWT is present in local storage
+  // Initialize the currentUser state from local storage
+  const [currentUser, setCurrentUser] = useState(() => {
     const token = localStorage.getItem('id_token');
     if (token) {
-      // Decode the token to extract user data
+      const decoded = Auth.getProfile(token);
+      return decoded;
+    }
+    return {};
+  });
+
+  // Add an effect to update currentUser when the token changes
+  useEffect(() => {
+    const token = localStorage.getItem('id_token');
+    if (token) {
       const decoded = Auth.getProfile(token);
       setCurrentUser(decoded);
+    } else {
+      setCurrentUser({}); // Clear currentUser when the token is removed (e.g., on logout)
     }
   }, []);
-
 
   return (
     <Router>

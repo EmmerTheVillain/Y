@@ -55,6 +55,7 @@ const typeDefs = `
     unfollowUser(currentUser: String! tweetAuthor: String!): User
     likeTweet(tweetId: ID!): Tweet
     updateUser(id: ID!, input: UpdateUserInput): User
+    deleteUser(id: ID!): User
   }
 
 

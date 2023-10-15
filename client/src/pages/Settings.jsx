@@ -1,11 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { useMutation, useQuery } from '@apollo/client';
-import { UPDATE_USER } from '../utils/mutations';
+import { UPDATE_USER, DELETE_USER } from '../utils/mutations';
 import { QUERY_ME } from '../utils/queries';
+import Auth from '../utils/auth';
 
 function Settings() {
+  if (!Auth.loggedIn()) {
+    // Redirect to the homepage if the user is not logged in
+    window.location.assign('/');
+    return null;
+  }
   const { loading, data } = useQuery(QUERY_ME);
   const [updateUser] = useMutation(UPDATE_USER);
+  const [deleteUser] = useMutation(DELETE_USER);
 
   const [formData, setFormData] = useState({
     name: '',
@@ -56,6 +63,22 @@ function Settings() {
     });
   };
 
+  const handleDeleteUser = async () => {
+    try {
+      if (data && data.me) {
+        const { data: deleteUserData } = await deleteUser({
+          variables: { id: data.me._id },
+        });
+  
+        // Handle success or error
+        console.log('User deleted:', deleteUserData.deleteUser);
+        Auth.logout();
+      }
+    } catch (error) {
+      console.error('Error deleting user:', error);
+    }
+  };
+
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -87,6 +110,7 @@ function Settings() {
         />
         <button type="submit">Update</button>
       </form>
+      <button onClick={handleDeleteUser}>Delete User</button>
     </div>
   );
 }

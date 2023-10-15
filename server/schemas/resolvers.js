@@ -148,6 +148,30 @@ const resolvers = {
         throw new ApolloError('Failed to update user', error);
       }
     },
+    deleteUser: async (_, { id }, context) => {
+      if (!context.user) {
+        throw new AuthenticationError('You need to be logged in to delete your account.');
+      }
+  
+      try {
+        // Delete the user
+        const deletedUser = await User.findByIdAndDelete(id);
+  
+        if (!deletedUser) {
+          throw new UserInputError('User not found.');
+        }
+  
+        // Delete all tweets authored by the user
+        await Tweet.deleteMany({ tweetAuthor: deletedUser.username });
+  
+        // Remove the user's _id from the likedBy field in all tweets
+        await Tweet.updateMany({}, { $pull: { likedBy: id } });
+  
+        return deletedUser;
+      } catch (error) {
+        throw new ApolloError('Failed to delete user', error);
+      }
+    },
     removeTweet: async (parent, { tweetId }, context) => {
       if (context.user) {
         const tweet = await Tweet.findOneAndDelete({
