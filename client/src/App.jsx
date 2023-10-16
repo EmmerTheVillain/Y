@@ -1,6 +1,6 @@
-import { useState } from 'react'
-import React from 'react';
+import { useState, useEffect, React } from 'react'
 import { HashRouter as Router, Route, Routes } from 'react-router-dom'; 
+import Auth from './utils/auth'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -9,11 +9,33 @@ import Col from 'react-bootstrap/Col';
 import NavOutput from './components/NavOutput.jsx'
 import Home from './pages/Home.jsx';
 import AboutUs from './pages/AboutUs.jsx'
-import MyTweetPage from './pages/MyTweetPage.jsx';
-import Sidebar from './components/Sidebar.jsx';
-import Profile from './pages/Profile.jsx';
+import Settings from './pages/Settings.jsx'
+import Signup from './pages/Signup.jsx';
+import SingleTweet from './pages/SingleTweet.jsx'
+// import Sidebar from './components/Sidebar.jsx';
+import Profile from './pages/profile.jsx';
 
 function App() {
+  // Initialize the currentUser state from local storage
+  const [currentUser, setCurrentUser] = useState(() => {
+    const token = localStorage.getItem('id_token');
+    if (token) {
+      const decoded = Auth.getProfile(token);
+      return decoded;
+    }
+    return {};
+  });
+
+  // Add an effect to update currentUser when the token changes
+  useEffect(() => {
+    const token = localStorage.getItem('id_token');
+    if (token) {
+      const decoded = Auth.getProfile(token);
+      setCurrentUser(decoded);
+    } else {
+      setCurrentUser({}); // Clear currentUser when the token is removed (e.g., on logout)
+    }
+  }, []);
   return (
     <Router>
       <Container fluid className="app">
@@ -30,12 +52,14 @@ function App() {
         size: 4
       }}>
           <main>
-            <Routes>
-            <Route exact path="/" element={<Home />} />
-            <Route exact path="/about" element={<AboutUs />} />
-            <Route exact path="/tweet" element={<MyTweetPage />} />
-            <Route exact path="/profile" element={<Profile />} />
-            </Routes>
+          <Routes>
+          <Route exact path="/" element={<Home currentUser={currentUser} />} />
+          <Route exact path="/about" element={<AboutUs />} />
+          <Route exact path="/signup" element={<Signup />} />
+          <Route exact path="/profiles/:profileId" element={<Profile currentUser={currentUser}/>} />
+          <Route exact path="/settings" element={<Settings />} />
+          <Route exact path="/tweets/:tweetId" element={<SingleTweet />} />
+          </Routes>
           </main>
           </Col>
           {/* <Col>
