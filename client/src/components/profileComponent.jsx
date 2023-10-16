@@ -1,7 +1,7 @@
 import Card from 'react-bootstrap/Card';
 import User from '../../../server/models/User';
 
-  function ProfileComponent() {
+function ProfileComponent() {
   return (
     <Card >
    
