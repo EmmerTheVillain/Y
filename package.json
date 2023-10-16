@@ -13,10 +13,17 @@
     "author": "",
     "license": "ISC",
     "devDependencies": {
+<<<<<<< Updated upstream
         "concurrently": "^5.3.0"
     },
     "dependencies": {
         "bootstrap": "^5.3.2",
         "react-bootstrap": "^2.9.0"
+=======
+        "concurrently": "^5.3.0", 
+        "bootstrap": "^5.3.2",
+        "react-bootstrap": "^2.9.0"
+        
+>>>>>>> Stashed changes
     }
 }
