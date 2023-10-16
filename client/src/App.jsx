@@ -12,8 +12,8 @@ import AboutUs from './pages/AboutUs.jsx'
 import Settings from './pages/Settings.jsx'
 import Signup from './pages/Signup.jsx';
 import SingleTweet from './pages/SingleTweet.jsx'
-import Sidebar from './components/Sidebar.jsx';
-import Profile from './pages/Profile.jsx';
+// import Sidebar from './components/Sidebar.jsx';
+import Profile from './pages/profile.jsx';
 
 function App() {
   // Initialize the currentUser state from local storage
