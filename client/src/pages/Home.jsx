@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import Login from '../components/Login.jsx';
+import GetTweets from '../components/UI/GetTweets.jsx'
 import TweetList from '../components/TweetList';
 import TweetForm from '../components/UI/TweetForm.jsx';
 import { useQuery } from '@apollo/client';
 import { QUERY_TWEETS } from '../utils/queries';
 
 const Home = ({ currentUser }) => {
-  const { loading, data } = useQuery(QUERY_TWEETS);
-  const tweets = data?.tweets || [];
   const isLoggedIn = currentUser.data;
 
   return (
@@ -19,13 +18,7 @@ const Home = ({ currentUser }) => {
           <div className="col-12 col-md-10 mb-3 p-3" style={{ border: '1px dotted #1a1a1a' }}>
             <TweetForm />
           </div>
-          <div className="col-12 col-md-8 mb-3">
-            {loading ? (
-              <div>Loading...</div>
-            ) : (
-              <TweetList tweets={tweets} title="YEETS" currentUser={currentUser} />
-            )}
-          </div>
+            <GetTweets currentUser={currentUser} />
         </>
       ) : (
         // Render the Login component for users who are not logged in

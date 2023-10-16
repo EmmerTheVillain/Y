@@ -10,7 +10,6 @@ import AboutUs from './pages/AboutUs.jsx';
 import Signup from './pages/Signup.jsx';
 import Login from './pages/Login.jsx'
 import Profile from './pages/Profile.jsx';
-import MyTweetPage from './pages/MyTweetPage.jsx';
 import Settings from './pages/Settings.jsx';
 import SingleTweet from './pages/SingleTweet.jsx'
 
