@@ -77,7 +77,10 @@ const Login = (props) => {
                   Submit
                 </button>
                 <Link to="/signup">
-                  <button type="button">
+                  <button 
+                    className="btn btn-block btn-primary"
+                    style={{ cursor: 'pointer' }}
+                    type="button">
                     Sign Up!
                   </button>
                 </Link>
