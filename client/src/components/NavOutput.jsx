@@ -14,7 +14,7 @@ function NavOutput() {
     <Link key={3} className="nav-link text-light" to="/tweet">
         New Tweet
     </Link>,
-    <Link key={3} className="nav-link text-light" to="/profile">
+    <Link key={4} className="nav-link text-light" to="/profile">
       Profile
     </Link>,
     // Add more links as needed
