@@ -1,15 +1,6 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
   function Tweet() {
-    // return (
-    //   <div style={styles.card}>
-    //     <div style={styles.heading}>{/*username?*/}</div>
-    //     <div style={styles.content}>{/*Yeet content*/}
-    //     </div>
-    //   </div>
-    // );
-  // }
-  
   return (
     <Card >
    

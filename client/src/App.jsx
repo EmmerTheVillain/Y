@@ -10,6 +10,8 @@ import NavOutput from './components/NavOutput.jsx'
 import Home from './pages/Home.jsx';
 import AboutUs from './pages/AboutUs.jsx'
 import MyTweetPage from './pages/MyTweetPage.jsx';
+import Sidebar from './components/Sidebar.jsx';
+import Profile from './pages/Profile.jsx';
 
 function App() {
   return (
@@ -23,7 +25,7 @@ function App() {
         <Row  className="">
           <Col className="bg-light border"
       sm={{
-        offset: 4,
+        offset: 5,
         order: 2,
         size: 4
       }}>
@@ -32,11 +34,20 @@ function App() {
             <Route exact path="/" element={<Home />} />
             <Route exact path="/about" element={<AboutUs />} />
             <Route exact path="/tweet" element={<MyTweetPage />} />
+            <Route exact path="/profile" element={<Profile />} />
             </Routes>
           </main>
           </Col>
+          {/* <Col>
+          <Sidebar />
+          </Col> */}
         </Row>
-        <Row>
+        <Row className="bg-light"
+      sm={{
+        offset: 1,
+        order: 1,
+        size: 3
+      }}>
           <footer>
             {/* Add footer here */}
           </footer>
