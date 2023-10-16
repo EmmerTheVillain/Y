@@ -54,48 +54,39 @@ const TweetList = ({
       {showTitle && <h3>{title}</h3>}
 
       {tweets &&
-        tweets.map((tweet) => (
-          <div key={tweet._id} className="card mb-3">
-            <h4 className="card-header bg-primary text-light p-2 m-0">
-              <Link
-                className="text-light"
-                to={`/profiles/${tweet.tweetAuthor}`}
-              >
-                {tweet.tweetAuthor} <br />
-                <span style={{ fontSize: '1rem' }}>
-                  had this tweet on {tweet.createdAt}
-                </span>
-              </Link>
-              {currentUser && currentUser.data && currentUser.data.username !== tweet.tweetAuthor && (
-                // Render the Follow button if user is logged in and not the tweet author
-                <button onClick={() => handleFollow(tweet.tweetAuthor)}>
-                  Follow
-                </button>
-              )}
-            </h4>
-            <div className="card-body bg-light p-2">
-              <p>{tweet.tweetText}</p>
-              {currentUser && tweet.likedBy && currentUser.data && !tweet.likedBy.some(user => user?._id === currentUser.data._id) && (
-  // Render the Like button if user is logged in and hasn't liked the tweet
-  <button onClick={() => {
-    console.log('tweet.likedBy:', tweet.likedBy);
-    console.log('currentUser.data._id:', currentUser.data._id);
-    handleLike(tweet._id);
-  }}>
-    Like
-  </button>
-)}
-
-            </div>
-            <Link
-              className="btn btn-primary btn-block btn-squared"
-              to={`/tweets/${tweet._id}`}
-            >
-              Join the discussion on this tweet.
-            </Link>
-          </div>
-        ))}
+  tweets.map((tweet) => (
+    <div key={tweet._id} className="card mb-3">
+      <h4 className="card-header bg-primary text-light p-2 m-0">
+        <Link className="text-light" to={`/profiles/${tweet.tweetAuthor}`}>
+          {tweet.tweetAuthor} <br />
+          <span style={{ fontSize: '1rem' }}>
+            had this tweet on {tweet.createdAt}
+          </span>
+        </Link>
+        {currentUser && currentUser.data && currentUser.data.username !== tweet.tweetAuthor && (
+          // Render the Follow button if user is logged in and not the tweet author
+          <button onClick={() => handleFollow(tweet.tweetAuthor)}>
+            Follow
+          </button>
+        )}
+      </h4>
+      <div className="card-body bg-light p-2">
+        <p>{tweet.tweetText}</p>
+        <div>
+          {/* Like button and counter */}
+          <button onClick={() => handleLike(tweet._id)}>Like</button>
+          <span> : {tweet.likedBy.length}</span>
+        </div>
+      </div>
+      <Link
+        className="btn btn-primary btn-block btn-squared"
+        to={`/tweets/${tweet._id}`}
+      >
+        Join the discussion on this tweet.
+      </Link>
     </div>
+  ))}
+</div>
   );
 };
 
