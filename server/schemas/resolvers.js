@@ -115,34 +115,47 @@ const resolvers = {
       if (!context.user) {
         throw new AuthenticationError('You need to be logged in to perform this action.');
       }
-
+    
       try {
         // Find the user by ID
         const userToUpdate = await User.findById(id);
-
+    
         if (!userToUpdate) {
           throw new UserInputError('User not found.');
         }
-
+    
         // Check if the user is authorized to update this user's information
         if (userToUpdate._id.toString() !== context.user._id.toString()) {
           throw new AuthenticationError('You are not authorized to update this user.');
         }
-
+    
         // Update the user fields if they exist in the input
         if (input.name) {
           userToUpdate.name = input.name;
         }
         if (input.username) {
+          const oldUsername = userToUpdate.username;
           userToUpdate.username = input.username;
+    
+          // Update tweetAuthor in all tweets by the user
+          await Tweet.updateMany(
+            { tweetAuthor: oldUsername },
+            { $set: { tweetAuthor: input.username } }
+          );
+    
+          // Update commentAuthor in all comments by the user
+          await Tweet.updateMany(
+            { 'comments.commentAuthor': oldUsername },
+            { $set: { 'comments.$.commentAuthor': input.username } }
+          );
         }
         if (input.password) {
           userToUpdate.password = input.password;
         }
-
+    
         // Save the updated user
         await userToUpdate.save();
-
+    
         return userToUpdate;
       } catch (error) {
         throw new ApolloError('Failed to update user', error);
