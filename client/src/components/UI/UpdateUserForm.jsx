@@ -62,8 +62,8 @@ function UpdateUserForm() {
 
   return (
     <div>
-      <h1>Settings</h1>
       <form onSubmit={handleFormSubmit}>
+        <p>New Name:</p>
         <input
           type="text"
           name="name"
@@ -71,6 +71,7 @@ function UpdateUserForm() {
           value={formData.name}
           onChange={handleChange}
         />
+        <p>New Username:</p>
         <input
           type="text"
           name="username"
@@ -78,6 +79,7 @@ function UpdateUserForm() {
           value={formData.username}
           onChange={handleChange}
         />
+        <p>New Password:</p>
         <input
           type="password"
           name="password"
@@ -85,7 +87,7 @@ function UpdateUserForm() {
           value={formData.password}
           onChange={handleChange}
         />
-        <button type="submit">Update</button>
+        <button class = "p-2" type="submit">Update</button>
       </form>
     </div>
   );

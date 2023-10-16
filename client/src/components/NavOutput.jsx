@@ -17,8 +17,8 @@ function NavOutput() {
     <Link key={1} className="nav-link text-light" to="/">
       Home
     </Link>,
-    <Link key={2} className="nav-link text-light" to="/about">
-      About Us
+    <Link key={2} className="nav-link text-light" to="/settings">
+      Settings
     </Link>,
     <Link key={3} className="nav-link text-light" to="/tweet">
         New Tweet

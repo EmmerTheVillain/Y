@@ -17,6 +17,7 @@ function Settings() {
     <div>
       <h1>Settings</h1>
       <UpdateUserForm />
+      <p>Delete Account:</p>
       <DeleteUserButton />
    </div>
   );
