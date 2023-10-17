@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 import NavbarComponent from './UI/NavbarComponent.jsx';
 import Auth from '../utils/auth.js';
 
-function NavOutput() {
+function NavOutput({currentUser}) {
   const isLoggedIn = Auth.loggedIn(); // Check if the user is logged in
-
+  console.log(currentUser)
   // Define the handleLogout function
   const handleLogout = () => {
     Auth.logout(); // Implement the logout logic using your authentication system
@@ -20,11 +20,8 @@ function NavOutput() {
     <Link key={2} className="nav-link text-light" to="/settings">
       Settings
     </Link>,
-    <Link key={3} className="nav-link text-light" to="/tweet">
-        New Tweet
-    </Link>,
-    <Link key={4} className="nav-link text-light" to="/profile">
-      Profile
+    <Link key={4} className="nav-link text-light" to={`/profiles/${currentUser.data.username}`}>
+      My Profile
     </Link>,
     // Add more links as needed
   ];

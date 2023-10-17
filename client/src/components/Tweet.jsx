@@ -11,7 +11,7 @@ import Card from 'react-bootstrap/Card';
           bulk of the card's content.
         </Card.Text>
         
-        <Button variant="primary">like</Button>  
+        <Button variant="dark">like</Button>  
         {/* truthy for if there is an image on the tweet to render image*/}
           <Card.Img variant="top" src="holder.js/100px180" />
         

@@ -31,7 +31,7 @@ function MyTweetPage() {
         value={tweetText}
         onChange={(e) => setTweetText(e.target.value)}
       />
-      <button onClick={handleTweetSubmit}>Tweet</button>
+      <button className="btn btn-dark btn-block btn-squared" onClick={handleTweetSubmit}>Tweet</button>
 
       <h2>Tweets</h2>
       <ul>
