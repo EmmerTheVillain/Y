@@ -11,7 +11,7 @@ import Home from './pages/Home.jsx';
 import AboutUs from './pages/AboutUs.jsx'
 import MyTweetPage from './pages/MyTweetPage.jsx';
 import Sidebar from './components/Sidebar.jsx';
-import Profile from './pages/Profile.jsx';
+import Profile from './pages/profile.jsx';
 
 function App() {
   return (
