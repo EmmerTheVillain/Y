@@ -1,9 +1,9 @@
 const fs = require('fs');
 const { MongoClient } = require('mongodb');
 
-const mongoURI = 'mongodb://127.0.0.1:27017/'; // Replace with your MongoDB URI
-const dbName = 'yeets-db'; // Replace with your database name
-const jsonFilePath = './data.json'; // Replace with your JSON file path
+const mongoURI = 'mongodb://127.0.0.1:27017/';
+const dbName = 'yeets-db';
+const jsonFilePath = './data.json';
 
 async function seedMongoDB() {
   try {

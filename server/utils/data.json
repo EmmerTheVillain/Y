@@ -36,17 +36,17 @@
     ],
     "Tweet": [
       {
-        "_id": 1,
+        "_id": "60d8edc194366b51d8b0d1c1",
         "tweetText": "This is a sample tweet",
-        "tweetAuthor": "johndoe",
+        "tweetAuthor": "5fc5b196c9e77c18f843a3e8",
         "createdAt": "2023-10-17T10:00:00Z",
         "comments": [],
         "likedBy": []
       },
       {
-        "_id": 2,
+        "_id": "60d8edc194366b51d8b0d1c2",
         "tweetText": "Another tweet by Alice",
-        "tweetAuthor": "alicesmith",
+        "tweetAuthor": "5fc5b196c9e77c18f843a3e9",
         "createdAt": "2023-10-17T11:00:00Z",
         "comments": [],
         "likedBy": []
@@ -54,15 +54,15 @@
     ],
     "Comment": [
       {
-        "_id": 1,
+        "_id": "60d8edc194366b51d8b0d1c3",
         "commentText": "Nice tweet!",
-        "commentAuthor": "johndoe",
+        "commentAuthor": "5fc5b196c9e77c18f843a3e8",
         "createdAt": "2023-10-17T10:30:00Z"
       },
       {
-        "_id": 2,
+        "_id": "60d8edc194366b51d8b0d1c4",
         "commentText": "I agree!",
-        "commentAuthor": "alicesmith",
+        "commentAuthor": "5fc5b196c9e77c18f843a3e9",
         "createdAt": "2023-10-17T11:30:00Z"
       }
     ],
