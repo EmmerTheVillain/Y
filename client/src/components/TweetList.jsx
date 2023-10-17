@@ -51,16 +51,16 @@ const TweetList = ({
 
   return (
     <div>
-      {showTitle && <h3>{title}</h3>}
+       {showTitle && <h3>{/*{title}*/}Tweets:</h3>} 
 
       {tweets &&
   tweets.map((tweet) => (
-    <div key={tweet._id} className="card mb-3">
-      <h4 className="card-header bg-primary text-light p-2 m-0">
-        <Link className="text-light" to={`/profiles/${tweet.tweetAuthor}`}>
+    <div key={tweet._id} className="card mb-3 p-3">
+      <h4 className="card-header bg-secondary text-light p-2 m-0">
+        <Link className="text-dark" to={`/profiles/${tweet.tweetAuthor}`}>
           {tweet.tweetAuthor} <br />
           <span style={{ fontSize: '1rem' }}>
-            had this tweet on {tweet.createdAt}
+            tweeted {tweet.createdAt}
           </span>
         </Link>
         {currentUser && currentUser.data && currentUser.data.username !== tweet.tweetAuthor && (
@@ -79,7 +79,7 @@ const TweetList = ({
         </div>
       </div>
       <Link
-        className="btn btn-primary btn-block btn-squared"
+        className="btn btn-dark btn-block btn-squared"
         to={`/tweets/${tweet._id}`}
       >
         Join the discussion on this tweet.
