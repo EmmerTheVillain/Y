@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useMutation, useQuery } from '@apollo/client';
 import { UPDATE_USER, DELETE_USER } from '../utils/mutations';
 import { QUERY_ME } from '../utils/queries';
@@ -7,12 +8,19 @@ import DeleteUserButton from '../components/UI/DeleteUserButton.jsx'
 import Auth from '../utils/auth';
 
 function Settings() {
-  if (!Auth.loggedIn()) {
+  const navigate = useNavigate();
+
+  
+  useEffect(() => {
+    // This code will run after the component has been rendered
+    if (!Auth.loggedIn()) {
+      // Redirect to the homepage if the user is not logged in
+      navigate('/');
+    }
+  }, []);
+
+  if (Auth.loggedIn()) {
     // Redirect to the homepage if the user is not logged in
-    window.location.assign('/');
-    return null;
-  }
- 
   return (
     <div>
       <h1>Settings</h1>
@@ -20,7 +28,7 @@ function Settings() {
       <p>Delete Account:</p>
       <DeleteUserButton />
    </div>
-  );
-}
+  ); }
+  }
 
 export default Settings;

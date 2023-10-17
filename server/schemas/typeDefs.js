@@ -51,7 +51,7 @@ const typeDefs = `
     addComment(tweetId: ID!, commentText: String!): Tweet
     removeTweet(tweetId: ID!): Tweet
     removeComment(tweetId: ID!, commentId: ID!): Tweet
-    followUser(currentUser: String!, tweetAuthor: String!): User
+    followUser(tweetAuthor: String!): User
     unfollowUser(currentUser: String! tweetAuthor: String!): User
     likeTweet(tweetId: ID!): Tweet
     updateUser(id: ID!, input: UpdateUserInput): User

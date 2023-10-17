@@ -218,25 +218,31 @@ const resolvers = {
       }
       throw AuthenticationError;
     },
-    followUser: async (_, { currentUser, tweetAuthor }, context) => {
+    followUser: async (_, { tweetAuthor }, context) => {
       // Check if the user is authenticated
       if (!context.user) {
-        console.log(context.user)
         throw new AuthenticationError('You need to be logged in to perform this action.');
       }
     
       try {
+        // Find the user that the current user wants to follow
         const userToFollow = await User.findOne({ username: tweetAuthor });
+        
         if (!userToFollow) {
           throw new UserInputError('User not found.');
         }
     
-        // Add the currentUser to the follower list of tweetAuthor
-        userToFollow.followers.push(context.user);
+        // Check if the current user is already following the userToFollow
+        if (userToFollow.followers.includes(context.user._id)) {
+          throw new UserInputError('You are already following this user.');
+        }
+    
+        // Add the current user to the followers of the userToFollow
+        userToFollow.followers.push(context.user._id);
         await userToFollow.save();
     
-        // Add tweetAuthor to the following list of the currentUser
-        context.user.following.push(userToFollow);
+        // Add the userToFollow to the following list of the current user
+        context.user.following.push(userToFollow._id);
         await context.user.save();
     
         return userToFollow;
