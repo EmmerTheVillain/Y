@@ -1,9 +1,10 @@
 const fs = require('fs');
 const { MongoClient } = require('mongodb');
+const path = require('path');
 
 const mongoURI = 'mongodb://127.0.0.1:27017/';
 const dbName = 'yeets-db';
-const jsonFilePath = './data.json';
+
 
 async function seedMongoDB() {
   try {
@@ -11,7 +12,7 @@ async function seedMongoDB() {
     await client.connect();
     const db = client.db(dbName);
 
-    const data = JSON.parse(fs.readFileSync(jsonFilePath, 'utf8'));
+    const data = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'utils', 'data.json'), 'utf8'));
 
     for (const key in data) {
       if (Array.isArray(data[key]) && data[key].length > 0) {
