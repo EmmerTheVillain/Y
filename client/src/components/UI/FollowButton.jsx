@@ -21,7 +21,6 @@ const FollowButton = ({
       const { data } = await followUser({
         variables: { tweetAuthor },
       });
-      console.log(variables)
       // Update the 'following' state after a successful follow action
       if (data && data.followUser) {
         const userToFollow = data.followUser;

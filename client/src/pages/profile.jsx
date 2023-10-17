@@ -10,8 +10,6 @@ const Profile = ({currentUser}) => {
   const { loading, data } = useQuery(QUERY_USER, {
     variables: { username: profileId },
   });
- console.log('currentUser:', currentUser)
- console.log('profileId:', profileId)
   const profile = data?.user || {};
   
   const renderSettingsButton = currentUser.data.username === profileId ? (

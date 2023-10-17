@@ -34,6 +34,14 @@ function NavOutput({currentUser}) {
       </button>
     );
   };
+
+  if (!isLoggedIn) {
+    navigationLinks.push(
+      <Link key={2} className="nav-link text-light" to={`/signup/`}>
+      New Account Signup
+    </Link>,
+    )
+  }
   return <NavbarComponent links={navigationLinks} />;
 }
 

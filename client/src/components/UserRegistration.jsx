@@ -25,7 +25,6 @@ function UserRegistration() {
 
 const handleSubmit = async (e) => {
   e.preventDefault();
-  console.log('Before createUser mutation');
   try {
     const { data } = await createUser({ variables: { input: formData } });
     const token = data.createUser.token; // Extract the token
@@ -34,11 +33,9 @@ const handleSubmit = async (e) => {
     // Optionally, handle successful registration (e.g., redirect to a protected page)
   } catch (error) {
     console.error('Registration failed:', error);
-    console.log(formData);
     // Display the error message to the user
     setError(error); // You can use state to display this error message
   }
-  console.log('After createUser mutation');
 };
 
   return (

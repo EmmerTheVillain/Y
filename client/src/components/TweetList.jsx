@@ -23,7 +23,6 @@ const TweetList = ({
       const { data } = await likeTweet({
         variables: { tweetId },
       });
-      console.log('data:', data);
     } catch (error) {
       console.error('Failed to like tweet:', error);
     }
