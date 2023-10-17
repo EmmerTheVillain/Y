@@ -1,12 +1,9 @@
+// Profile.jsx
 import React, { useState, useEffect } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
-import { QUERY_USER, QUERY_ME } from '../utils/queries';
+import { QUERY_USER, QUERY_ME } from '../utils/queries'; // Import your GraphQL query
 import { useQuery } from '@apollo/client';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Tweet from '../components/Tweet';
-import ProfileComponent from '../components/profileComponent';
+import TweetList from '../components/TweetList';
 
 const Profile = ({currentUser}) => {
   const { profileId } = useParams();
@@ -15,20 +12,13 @@ const Profile = ({currentUser}) => {
   });
 
   const profile = data?.user || {};
+
   return (
-    <Container>
-      <Row className="home">
-        <Col md={{ span: 6, offset: 3 }}>{
-          <ProfileComponent />
-        }
-        </Col>
-        {/* <TweetList tweets={profile.tweets || []} title="Tweets" showUsername={true} currentUser={currentUser} /> */}
-
-        <Tweet />
-      </Row>
-    </Container>
+    <div>
+      <h1>{profile.username}'s Profile</h1>
+      <TweetList tweets={profile.tweets || []} title="Tweets" showUsername={true} currentUser={currentUser} /> {/* Always show the username */}
+    </div>
   );
-}
-
+};
 
 export default Profile;

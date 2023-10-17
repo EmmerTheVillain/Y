@@ -74,8 +74,12 @@ const TweetList = ({
         <p>{tweet.tweetText}</p>
         <div>
           {/* Like button and counter */}
-          <button onClick={() => handleLike(tweet._id)}>Like</button>
-          <span> : {tweet.likedBy.length}</span>
+          {currentUser && tweet.likedBy && currentUser.data && !tweet.likedBy.some(user => user?._id === currentUser.data._id) && (
+
+          <button onClick={() => handleLike(tweet._id)}>Like</button>)}
+    {tweet.likedBy && tweet.likedBy.length > 0 && (
+      <span> Likes: {tweet.likedBy.length}</span>
+    )}
         </div>
       </div>
       <Link
