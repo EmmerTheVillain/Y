@@ -1,0 +1,80 @@
+{
+    "User": [
+      {
+        "_id": 1,
+        "name": "John Doe",
+        "username": "johndoe",
+        "email": "johndoe@example.com",
+        "password": "password123",
+        "tweets": [],
+        "following": [],
+        "followers": [],
+        "likes": []
+      },
+      {
+        "_id": 2,
+        "name": "Alice Smith",
+        "username": "alicesmith",
+        "email": "alice@example.com",
+        "password": "alicepass",
+        "tweets": [],
+        "following": [],
+        "followers": [],
+        "likes": []
+      },
+      {
+        "_id": 3,
+        "name": "Bob Johnson",
+        "username": "bobjohnson",
+        "email": "bob@example.com",
+        "password": "bobpass123",
+        "tweets": [],
+        "following": [],
+        "followers": [],
+        "likes": []
+      }
+    ],
+    "Tweet": [
+      {
+        "_id": 1,
+        "tweetText": "This is a sample tweet",
+        "tweetAuthor": "johndoe",
+        "createdAt": "2023-10-17T10:00:00Z",
+        "comments": [],
+        "likedBy": []
+      },
+      {
+        "_id": 2,
+        "tweetText": "Another tweet by Alice",
+        "tweetAuthor": "alicesmith",
+        "createdAt": "2023-10-17T11:00:00Z",
+        "comments": [],
+        "likedBy": []
+      }
+    ],
+    "Comment": [
+      {
+        "_id": 1,
+        "commentText": "Nice tweet!",
+        "commentAuthor": "johndoe",
+        "createdAt": "2023-10-17T10:30:00Z"
+      },
+      {
+        "_id": 2,
+        "commentText": "I agree!",
+        "commentAuthor": "alicesmith",
+        "createdAt": "2023-10-17T11:30:00Z"
+      }
+    ],
+    "Auth": [
+      {
+        "token": "token123",
+        "user": 1
+      },
+      {
+        "token": "token456",
+        "user": 2
+      }
+    ]
+}
+  
