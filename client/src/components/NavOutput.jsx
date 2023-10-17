@@ -19,14 +19,15 @@ function NavOutput({currentUser}) {
     <Link key={2} className="nav-link text-light" to="/settings">
       Settings
     </Link>,
-    <Link key={4} className="nav-link text-light" to={`/profiles/${currentUser.data.username}`}>
-      My Profile
-    </Link>,
+
     // Add more links as needed
   ];
 
   if (isLoggedIn) {
     navigationLinks.push(
+      <Link key={4} className="nav-link text-light" to={`/profiles/${currentUser.data.username}`}>
+      My Profile
+    </Link>,
       <button
         key={5}
         className="btn btn-link text-light"
