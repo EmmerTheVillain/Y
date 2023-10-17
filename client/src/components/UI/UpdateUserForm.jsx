@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useMutation, useQuery } from '@apollo/client';
 import { UPDATE_USER } from '../../utils/mutations';
 import { QUERY_ME } from '../../utils/queries';
@@ -6,6 +7,7 @@ import { QUERY_ME } from '../../utils/queries';
 function UpdateUserForm() {
   const { loading, data } = useQuery(QUERY_ME);
   const [updateUser] = useMutation(UPDATE_USER);
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     name: '',
@@ -42,6 +44,8 @@ function UpdateUserForm() {
           username: '',
           password: '',
         });
+
+        navigate(0);
       }
     } catch (error) {
       console.error('Error updating user:', error);
@@ -87,7 +91,7 @@ function UpdateUserForm() {
           value={formData.password}
           onChange={handleChange}
         />
-        <button class = "p-2" type="submit">Update</button>
+        <button className = "p-2" type="submit">Update</button>
       </form>
     </div>
   );

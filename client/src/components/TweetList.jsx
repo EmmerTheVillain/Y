@@ -3,6 +3,7 @@ import { React, useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { Link } from 'react-router-dom';
 import { FOLLOW_USER, LIKE_TWEET } from '../utils/mutations';
+import FollowButton from './UI/FollowButton.jsx';
 
 const TweetList = ({
   tweets,
@@ -15,23 +16,6 @@ const TweetList = ({
   const [followUser] = useMutation(FOLLOW_USER);
   const [likeTweet] = useMutation(LIKE_TWEET);
 
-  const handleFollow = async (tweetAuthor) => {
-    try {
-      // Execute the FOLLOW_USER mutation with the username
-      const { data } = await followUser({
-        variables: { currentUser: currentUser.username, tweetAuthor },
-      });
-      console.log(variables)
-      // Update the 'following' state after a successful follow action
-      if (data && data.followUser) {
-        const userToFollow = data.followUser;
-        // Update the 'following' state by adding the user to the list
-        setFollowing([...following, userToFollow]);
-      }
-    } catch (error) {
-      console.error('Failed to follow user:', error);
-    }
-  };
 
   const handleLike = async (tweetId) => {
     try {
@@ -63,12 +47,10 @@ const TweetList = ({
             tweeted {tweet.createdAt}
           </span>
         </Link>
-        {currentUser && currentUser.data && currentUser.data.username !== tweet.tweetAuthor && (
+        {/* {currentUser && currentUser.data && currentUser.data.username !== tweet.tweetAuthor && (
           // Render the Follow button if user is logged in and not the tweet author
-          <button onClick={() => handleFollow(tweet.tweetAuthor)}>
-            Follow
-          </button>
-        )}
+       <FollowButton tweet={tweet}/>
+        )} */}
       </h4>
       <div className="card-body bg-light p-2">
         <p>{tweet.tweetText}</p>
