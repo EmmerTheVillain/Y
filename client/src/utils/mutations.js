@@ -64,10 +64,6 @@ export const FOLLOW_USER = gql`
     followUser(tweetAuthor: $tweetAuthor) {
       _id
       username
-      followers {
-        _id
-        username
-      }
     }
   }
 `;

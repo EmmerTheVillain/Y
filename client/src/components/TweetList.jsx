@@ -3,6 +3,7 @@ import { React, useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { Link } from 'react-router-dom';
 import { FOLLOW_USER, LIKE_TWEET } from '../utils/mutations';
+import FollowButton from './UI/FollowButton.jsx';
 
 const TweetList = ({
   tweets,
@@ -15,23 +16,6 @@ const TweetList = ({
   const [followUser] = useMutation(FOLLOW_USER);
   const [likeTweet] = useMutation(LIKE_TWEET);
 
-  const handleFollow = async (tweetAuthor) => {
-    try {
-      // Execute the FOLLOW_USER mutation with the username
-      const { data } = await followUser({
-        variables: { currentUser: currentUser.username, tweetAuthor },
-      });
-      console.log(variables)
-      // Update the 'following' state after a successful follow action
-      if (data && data.followUser) {
-        const userToFollow = data.followUser;
-        // Update the 'following' state by adding the user to the list
-        setFollowing([...following, userToFollow]);
-      }
-    } catch (error) {
-      console.error('Failed to follow user:', error);
-    }
-  };
 
   const handleLike = async (tweetId) => {
     try {
@@ -39,7 +23,6 @@ const TweetList = ({
       const { data } = await likeTweet({
         variables: { tweetId },
       });
-      console.log('data:', data);
     } catch (error) {
       console.error('Failed to like tweet:', error);
     }
@@ -51,35 +34,37 @@ const TweetList = ({
 
   return (
     <div>
-      {showTitle && <h3>{title}</h3>}
+       {showTitle && <h3>{/*{title}*/}Tweets:</h3>} 
 
       {tweets &&
   tweets.map((tweet) => (
-    <div key={tweet._id} className="card mb-3">
-      <h4 className="card-header bg-primary text-light p-2 m-0">
-        <Link className="text-light" to={`/profiles/${tweet.tweetAuthor}`}>
+    <div key={tweet._id} className="card mb-3 p-3">
+      <h4 className="card-header bg-secondary text-light p-2 m-0">
+        <Link className="text-dark" to={`/profiles/${tweet.tweetAuthor}`}>
           {tweet.tweetAuthor} <br />
           <span style={{ fontSize: '1rem' }}>
-            had this tweet on {tweet.createdAt}
+            tweeted {tweet.createdAt}
           </span>
         </Link>
-        {currentUser && currentUser.data && currentUser.data.username !== tweet.tweetAuthor && (
+        {/* {currentUser && currentUser.data && currentUser.data.username !== tweet.tweetAuthor && (
           // Render the Follow button if user is logged in and not the tweet author
-          <button onClick={() => handleFollow(tweet.tweetAuthor)}>
-            Follow
-          </button>
-        )}
+       <FollowButton tweet={tweet}/>
+        )} */}
       </h4>
       <div className="card-body bg-light p-2">
         <p>{tweet.tweetText}</p>
         <div>
           {/* Like button and counter */}
-          <button onClick={() => handleLike(tweet._id)}>Like</button>
-          <span> : {tweet.likedBy.length}</span>
+          {currentUser && tweet.likedBy && currentUser.data && !tweet.likedBy.some(user => user?._id === currentUser.data._id) && (
+
+          <button onClick={() => handleLike(tweet._id)}>Like</button>)}
+    {tweet.likedBy && tweet.likedBy.length > 0 && (
+      <span> Likes: {tweet.likedBy.length}</span>
+    )}
         </div>
       </div>
       <Link
-        className="btn btn-primary btn-block btn-squared"
+        className="btn btn-dark btn-block btn-squared"
         to={`/tweets/${tweet._id}`}
       >
         Join the discussion on this tweet.
