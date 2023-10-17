@@ -51,16 +51,16 @@ const TweetList = ({
 
   return (
     <div>
-      {showTitle && <h3>{title}</h3>}
+       {showTitle && <h3>{/*{title}*/}Tweets:</h3>} 
 
       {tweets &&
   tweets.map((tweet) => (
-    <div key={tweet._id} className="card mb-3">
-      <h4 className="card-header bg-primary text-light p-2 m-0">
-        <Link className="text-light" to={`/profiles/${tweet.tweetAuthor}`}>
+    <div key={tweet._id} className="card mb-3 p-3">
+      <h4 className="card-header bg-secondary text-light p-2 m-0">
+        <Link className="text-dark" to={`/profiles/${tweet.tweetAuthor}`}>
           {tweet.tweetAuthor} <br />
           <span style={{ fontSize: '1rem' }}>
-            had this tweet on {tweet.createdAt}
+            tweeted {tweet.createdAt}
           </span>
         </Link>
         {currentUser && currentUser.data && currentUser.data.username !== tweet.tweetAuthor && (
@@ -74,12 +74,16 @@ const TweetList = ({
         <p>{tweet.tweetText}</p>
         <div>
           {/* Like button and counter */}
-          <button onClick={() => handleLike(tweet._id)}>Like</button>
-          <span> : {tweet.likedBy.length}</span>
+          {currentUser && tweet.likedBy && currentUser.data && !tweet.likedBy.some(user => user?._id === currentUser.data._id) && (
+
+          <button onClick={() => handleLike(tweet._id)}>Like</button>)}
+    {tweet.likedBy && tweet.likedBy.length > 0 && (
+      <span> Likes: {tweet.likedBy.length}</span>
+    )}
         </div>
       </div>
       <Link
-        className="btn btn-primary btn-block btn-squared"
+        className="btn btn-dark btn-block btn-squared"
         to={`/tweets/${tweet._id}`}
       >
         Join the discussion on this tweet.

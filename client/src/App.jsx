@@ -41,7 +41,7 @@ function App() {
       <Container fluid className="app">
         <Row className="justify-content-center">
           <header>
-            <NavOutput />
+            <NavOutput currentUser={currentUser}/>
           </header>
         </Row>
         <Row  className="">
