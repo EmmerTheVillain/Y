@@ -6,7 +6,6 @@ import Auth from '../utils/auth.js';
 
 function NavOutput({currentUser}) {
   const isLoggedIn = Auth.loggedIn(); // Check if the user is logged in
-  console.log(currentUser)
   // Define the handleLogout function
   const handleLogout = () => {
     Auth.logout(); // Implement the logout logic using your authentication system
