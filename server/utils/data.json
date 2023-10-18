@@ -1,0 +1,80 @@
+{
+    "User": [
+      {
+        "_id": "5fc5b196c9e77c18f843a3e8",
+        "name": "John Doe",
+        "username": "johndoe",
+        "email": "johndoe@example.com",
+        "password": "password123",
+        "tweets": [],
+        "following": [],
+        "followers": [],
+        "likes": []
+      },
+      {
+        "_id": "5fc5b196c9e77c18f843a3e9",
+        "name": "Alice Smith",
+        "username": "alicesmith",
+        "email": "alice@example.com",
+        "password": "alicepass",
+        "tweets": [],
+        "following": [],
+        "followers": [],
+        "likes": []
+      },
+      {
+        "_id": "5fc5b196c9e77c18f843a3ea",
+        "name": "Bob Johnson",
+        "username": "bobjohnson",
+        "email": "bob@example.com",
+        "password": "bobpass123",
+        "tweets": [],
+        "following": [],
+        "followers": [],
+        "likes": []
+      }
+    ],
+    "Tweet": [
+      {
+        "_id": "60d8edc194366b51d8b0d1c1",
+        "tweetText": "This is a sample tweet",
+        "tweetAuthor": "5fc5b196c9e77c18f843a3e8",
+        "createdAt": "2023-10-17T10:00:00Z",
+        "comments": [],
+        "likedBy": []
+      },
+      {
+        "_id": "60d8edc194366b51d8b0d1c2",
+        "tweetText": "Another tweet by Alice",
+        "tweetAuthor": "5fc5b196c9e77c18f843a3e9",
+        "createdAt": "2023-10-17T11:00:00Z",
+        "comments": [],
+        "likedBy": []
+      }
+    ],
+    "Comment": [
+      {
+        "_id": "60d8edc194366b51d8b0d1c3",
+        "commentText": "Nice tweet!",
+        "commentAuthor": "5fc5b196c9e77c18f843a3e8",
+        "createdAt": "2023-10-17T10:30:00Z"
+      },
+      {
+        "_id": "60d8edc194366b51d8b0d1c4",
+        "commentText": "I agree!",
+        "commentAuthor": "5fc5b196c9e77c18f843a3e9",
+        "createdAt": "2023-10-17T11:30:00Z"
+      }
+    ],
+    "Auth": [
+      {
+        "token": "token123",
+        "user": 1
+      },
+      {
+        "token": "token456",
+        "user": 2
+      }
+    ]
+}
+  

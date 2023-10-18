@@ -5,6 +5,9 @@ import { QUERY_USER, QUERY_ME } from '../utils/queries';
 import { useQuery } from '@apollo/client';
 import TweetList from './components/TweetList.jsx';
 
+<<<<<<< HEAD
+function ProfileComponent() {
+=======
 const ProfileComponent = ({currentUser}) => {
   const { profileId } = useParams();
   const { loading, data } = useQuery(QUERY_USER, {
@@ -12,6 +15,7 @@ const ProfileComponent = ({currentUser}) => {
   });
 
   const profile = data?.user || {};
+>>>>>>> 08ebd4f2415cd6ef6794dc3f46f2d93cad20dd63
   return (
     <Card >
    
