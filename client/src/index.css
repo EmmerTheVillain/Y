@@ -60,6 +60,16 @@ button:focus-visible {
   margin-top:48px; 
 }
 
+
+/* Styling for the Like button to turn red and then back*/
+.likeButton {
+  background-color: black; /* Initial background color */
+  transition: background-color 0.3s ease /* Transition effect */
+}
+.likeButton:hover {
+  background-color: red; /* Background color on hover */
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

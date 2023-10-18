@@ -37,7 +37,7 @@ function NavOutput({currentUser}) {
 
   if (!isLoggedIn) {
     navigationLinks.push(
-      <Link key={2} className="nav-link text-light" to={`/signup/`}>
+      <Link key={2} style={{ backgroundColor: 'green' }}className="nav-link text-light" to={`/signup/`}>
       New Account Signup
     </Link>,
     )

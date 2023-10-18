@@ -51,6 +51,7 @@ const Login = (props) => {
                 <Link to="/">back to the homepage.</Link>
               </p>
             ) : (
+              
               <form onSubmit={handleFormSubmit}>
                 <input
                   className="form-input"
@@ -68,6 +69,7 @@ const Login = (props) => {
                   value={formState.password}
                   onChange={handleChange}
                 />
+                <br></br>
                 <button
                   className="btn btn-block btn-primary"
                   style={{ cursor: 'pointer' }}
@@ -78,7 +80,11 @@ const Login = (props) => {
                 <Link to="/signup">
                   <button 
                     className="btn btn-block btn-primary"
-                    style={{ cursor: 'pointer' }}
+                    style={{ 
+                      cursor: 'pointer',
+                      marginLeft: '24px',
+                      backgroundColor: 'green'
+                    }}
                     type="button">
                     Sign Up!
                   </button>

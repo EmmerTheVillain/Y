@@ -57,7 +57,7 @@ const TweetList = ({
           {/* Like button and counter */}
           {currentUser && tweet.likedBy && currentUser.data && !tweet.likedBy.some(user => user?._id === currentUser.data._id) && (
 
-          <button onClick={() => handleLike(tweet._id)}>Like</button>)}
+          <button className="likeButton" onClick={() => handleLike(tweet._id)}>Like</button>)}
     {tweet.likedBy && tweet.likedBy.length > 0 && (
       <span> Likes: {tweet.likedBy.length}</span>
     )}
@@ -67,7 +67,7 @@ const TweetList = ({
         className="btn btn-dark btn-block btn-squared"
         to={`/tweets/${tweet._id}`}
       >
-        Join the discussion on this tweet.
+        View replies to this tweet.
       </Link>
     </div>
   ))}

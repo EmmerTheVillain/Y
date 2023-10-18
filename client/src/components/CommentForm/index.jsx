@@ -41,7 +41,7 @@ const CommentForm = ({ tweetId }) => {
 
   return (
     <div>
-      <h4>What are your tweets on this tweet?</h4>
+      <h4>What is your reply to this yeet?</h4>
 
       {Auth.loggedIn() ? (
         <>
@@ -70,7 +70,7 @@ const CommentForm = ({ tweetId }) => {
 
             <div className="col-12 col-lg-3">
               <button className="btn btn-primary btn-block py-3" type="submit">
-                Add Comment
+                Add Reply
               </button>
             </div>
           </form>
